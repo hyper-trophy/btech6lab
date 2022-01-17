@@ -1,0 +1,17 @@
+* cumpolsory comment
+.model mybjt npn (bf=50)
+Q1 3 2 0 mybjt
+rb 2 1 1k
+rc 3 4 100
+vbb 1 0 1
+vcc 4 0 5
+
+* .dc vbb 0 5 0.1
+.dc vcc 0 5 0.05 vbb 0 1 0.05
+
+.control
+run
+* plot -i(vbb)
+plot -i(vcc)
+.endc
+.end
