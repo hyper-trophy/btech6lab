@@ -1,0 +1,14 @@
+* Reverse recovery time of diode
+.MODEL SWITCH D (IS=1E-12 RS=10 CJO=5P TT=10N BV=10)
+V1 1 0 pulse (5 -3 10N 0.05N 0.05N 30N 50N)
+RS 1 2 1K
+D1 2 3 Switch
+Vo 3 0 0
+
+.TRAN 1N 50N
+.control
+run
+plot v(1) v(2)
+plot i(Vo)
+.endc
+.end

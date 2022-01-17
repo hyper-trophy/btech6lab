@@ -1,15 +1,13 @@
-*Diode Forward ch/cs
+* Diode Reverse ch/cs
 
 .Model mod1 D (IS=1E-12 RS=10 CJO=5P TT=10N BV=10)
 D1 2 0 mod1
 
 R1 1 2 1k
 V1 1 0 dc 1
-.dc V1 0 5 0.05
+.dc V1 -5 0 0.05
 .control
 run
-* plot v(1)-v(2)
 plot -I(V1)
 .endc
 .end
-
