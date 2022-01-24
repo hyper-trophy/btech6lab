@@ -1,0 +1,27 @@
+* RTL Inverter fanout
+.model switch NPN (Bf=20)
+
+.subckt Rtl out in vc gnd
+Q2 out y gnd switch
+Rb1 in y 10k
+Rc1 vc out 1k
+.ends Rtl
+
+Vcc vcc_src 0 5
+Vin vin_src 0 5
+X_main out_main vin_src vcc_src 0 Rtl
+
+X1 outl out_main vcc_src 0 Rtl
+X2 out2 out_main vcc_src 0 Rtl
+X3 out3 out_main vcc_src 0 Rtl
+X4 out4 out_main vcc_src 0 Rtl
+X5 out5 out_main vcc_src 0 Rtl
+X6 out6 out_main vcc_src 0 Rtl
+
+.dc Vin 0 5 0.05
+.control
+run
+plot V(out_main) V(vin_src)
+* plot V(out1) 
+.endc
+.end

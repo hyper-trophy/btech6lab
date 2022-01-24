@@ -1,0 +1,18 @@
+* U19EC046 Lab 2_2
+.model mybjt npn (bf=20)
+Q1 2 1 0 mybjt
+Rc 2 3 1k
+Rb 4 1 10k
+Vcc 3 0 5
+Vin 4 0 pulse(0 5 1ns 1ns 1ns 20us 40us)
+C 3 0 1p
+
+.tran 1ns 80us
+
+.control
+run
+plot V(2) V(4)
+.endc
+.end
+
+
