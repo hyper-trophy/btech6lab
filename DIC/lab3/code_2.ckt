@@ -1,0 +1,26 @@
+* dtl transfer char
+.model q1 npn bf=50
+.model d1 d
+
+q11 out 3 0 q1
+
+da 2 a d1
+db 2 a d1
+dc 2 4 d1
+dd 4 3 d1
+
+r1 1 2 2k
+rc 1 out 4k
+r2 3 b 20k
+
+vbb b 0 -2
+vec 1 0 5
+va a 0 pulse(0 5 20ps 10ps 10ps 200ps 550ps)
+
+.tran 20ps 1500ps
+
+.control
+run
+plot v(a) v(out)
+.endc
+.end

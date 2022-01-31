@@ -1,0 +1,81 @@
+*DTL NAND FANOUT
+.model q1 npn bf=50
+.model d1 d
+
+.subckt dtlckt a b c 1 0 out
+q1 out 4 0 q1
+da 2 a d1
+db 2 b d1
+dc 2 3 d1
+dd 3 4 d1
+r1 2 1 2k
+rc 1 out 4k
+r2 4 c 20k
+.ends dtlckt
+
+*supply
+vcc 1 0 5
+vbb c 0 -2
+Va a 0 5
+
+*driver gate
+Xd a a c 1 0 out1 dtlckt
+
+*Load gates
+XL1 out1 out1 c 1 0 out2 dtlckt
+XL2 out1 out1 c 1 0 out3 dtlckt
+XL3 out1 out1 c 1 0 out4 dtlckt
+XL4 out1 out1 c 1 0 out5 dtlckt
+XL5 out1 out1 c 1 0 out6 dtlckt
+XL6 out1 out1 c 1 0 out7 dtlckt
+XL7 out1 out1 c 1 0 out8 dtlckt
+XL8 out1 out1 c 1 0 out9 dtlckt
+XL9 out1 out1 c 1 0 out10 dtlckt
+XL10 out1 out1 c 1 0 out11 dtlckt
+XL11 out1 out1 c 1 0 out12 dtlckt
+XL12 out1 out1 c 1 0 out13 dtlckt
+XL13 out1 out1 c 1 0 out14 dtlckt
+XL14 out1 out1 c 1 0 out15 dtlckt
+XL15 out1 out1 c 1 0 out16 dtlckt
+XL16 out1 out1 c 1 0 out17 dtlckt
+XL17 out1 out1 c 1 0 out18 dtlckt
+XL18 out1 out1 c 1 0 out19 dtlckt
+XL19 out1 out1 c 1 0 out20 dtlckt
+XL20 out1 out1 c 1 0 out21 dtlckt
+XL21 out1 out1 c 1 0 out22 dtlckt
+XL22 out1 out1 c 1 0 out23 dtlckt
+XL23 out1 out1 c 1 0 out24 dtlckt
+XL24 out1 out1 c 1 0 out25 dtlckt
+XL25 out1 out1 c 1 0 out26 dtlckt
+XL26 out1 out1 c 1 0 out27 dtlckt
+XL27 out1 out1 c 1 0 out28 dtlckt
+XL28 out1 out1 c 1 0 out29 dtlckt
+XL29 out1 out1 c 1 0 out30 dtlckt
+XL30 out1 out1 c 1 0 out31 dtlckt
+XL31 out1 out1 c 1 0 out32 dtlckt
+XL32 out1 out1 c 1 0 out33 dtlckt
+XL33 out1 out1 c 1 0 out34 dtlckt
+XL34 out1 out1 c 1 0 out35 dtlckt
+XL35 out1 out1 c 1 0 out36 dtlckt
+XL36 out1 out1 c 1 0 out37 dtlckt
+XL37 out1 out1 c 1 0 out38 dtlckt
+XL38 out1 out1 c 1 0 out39 dtlckt
+XL39 out1 out1 c 1 0 out40 dtlckt
+XL40 out1 out1 c 1 0 out41 dtlckt
+XL41 out1 out1 c 1 0 out42 dtlckt
+XL42 out1 out1 c 1 0 out43 dtlckt
+XL43 out1 out1 c 1 0 out44 dtlckt
+XL44 out1 out1 c 1 0 out45 dtlckt
+XL45 out1 out1 c 1 0 out46 dtlckt
+XL46 out1 out1 c 1 0 out47 dtlckt
+XL47 out1 out1 c 1 0 out48 dtlckt
+XL48 out1 out1 c 1 0 out49 dtlckt
+XL49 out1 out1 c 1 0 out50 dtlckt
+XL50 out1 out1 c 1 0 out51 dtlckt
+
+.dc Va 0.5 5 0.05
+.control
+run
+plot V(out1) V(a)
+.endc
+.end
