@@ -1,0 +1,30 @@
+* dtl transfer char
+.model mybjt npn bf=50
+.model mydiode d
+
+.subckt modifiedDTL in1 in2 vccNode gnd out
+    rc vccNode out 2k
+    q2 out q2base gnd mybjt
+    r3 q2base gnd 5k
+    dd q1emmiter q2base mydiode
+    q1 q1collector q1base q1emmiter mybjt
+    r2 q1collector q1base 2k
+    r1 q1collector vccNode 1.75k
+    da q1base in1 mydiode
+    db q1base in2 mydiode
+.ends dtlckt
+
+*supply
+vcc vccNode 0 5
+Va in 0 5
+
+*driver gate
+Xd in in vccNode 0 out1 modifiedDTL
+
+.dc Va 0.5 5 0.05
+
+.control
+run
+plot v(in) v(out1)
+.endc
+.end
