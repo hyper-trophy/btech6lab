@@ -1,4 +1,4 @@
-* modified dtl transfer char
+* modified dtl propogation delay
 .model mybjt npn bf=20
 .model mydiode d
 
@@ -16,12 +16,13 @@
 
 *supply
 vcc vccNode 0 5
-Va in 0 5
+* va in 0 pulse(0 5 0ps 10ps 10ps 200ps 1000ps)
+va in 0 pulse(0 5 0ps 1ps 1ps 20us 40us)
 
-*driver gate
 Xd in in vccNode 0 out1 modifiedDTL
+c_load out1 0 1p
 
-.dc Va 0.5 5 0.05
+.tran 20ns 80us
 
 .control
 run

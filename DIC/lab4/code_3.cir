@@ -1,0 +1,121 @@
+* modified dtl fanout
+
+*spoiler : fanout = 33 at (bf = 20) and 88 at (bf = 50)
+.model mybjt npn bf=50
+.model mydiode d
+
+.subckt modifiedDTL in1 in2 vccNode gnd out
+    rc vccNode out 2k
+    q2 out q2base gnd mybjt
+    r3 q2base gnd 5k
+    dd q1emmiter q2base mydiode
+    q1 q1collector q1base q1emmiter mybjt
+    r2 q1collector q1base 2k
+    r1 q1collector vccNode 1.75k
+    da q1base in1 mydiode
+    db q1base in2 mydiode
+.ends dtlckt
+
+*supply
+vcc vccNode 0 5
+Va in 0 5
+
+*driver gate
+Xd in in vccNode 0 out1 modifiedDTL
+
+*load gates
+XL1 out1 out1 vccNode 0 out2 modifiedDTL
+XL2 out1 out1 vccNode 0 out3 modifiedDTL
+XL3 out1 out1 vccNode 0 out4 modifiedDTL
+XL4 out1 out1 vccNode 0 out5 modifiedDTL
+XL5 out1 out1 vccNode 0 out6 modifiedDTL
+XL6 out1 out1 vccNode 0 out7 modifiedDTL
+XL7 out1 out1 vccNode 0 out8 modifiedDTL
+XL8 out1 out1 vccNode 0 out9 modifiedDTL
+XL9 out1 out1 vccNode 0 out10 modifiedDTL
+XL10 out1 out1 vccNode 0 out11 modifiedDTL
+XL11 out1 out1 vccNode 0 out12 modifiedDTL
+XL12 out1 out1 vccNode 0 out13 modifiedDTL
+XL13 out1 out1 vccNode 0 out14 modifiedDTL
+XL14 out1 out1 vccNode 0 out15 modifiedDTL
+XL15 out1 out1 vccNode 0 out16 modifiedDTL
+XL16 out1 out1 vccNode 0 out17 modifiedDTL
+XL17 out1 out1 vccNode 0 out18 modifiedDTL
+XL18 out1 out1 vccNode 0 out19 modifiedDTL
+XL19 out1 out1 vccNode 0 out20 modifiedDTL
+XL20 out1 out1 vccNode 0 out21 modifiedDTL
+XL21 out1 out1 vccNode 0 out22 modifiedDTL
+XL22 out1 out1 vccNode 0 out23 modifiedDTL
+XL23 out1 out1 vccNode 0 out24 modifiedDTL
+XL24 out1 out1 vccNode 0 out25 modifiedDTL
+XL25 out1 out1 vccNode 0 out26 modifiedDTL
+XL26 out1 out1 vccNode 0 out27 modifiedDTL
+XL27 out1 out1 vccNode 0 out28 modifiedDTL
+XL28 out1 out1 vccNode 0 out29 modifiedDTL
+XL29 out1 out1 vccNode 0 out30 modifiedDTL
+XL30 out1 out1 vccNode 0 out31 modifiedDTL
+XL31 out1 out1 vccNode 0 out32 modifiedDTL
+XL32 out1 out1 vccNode 0 out33 modifiedDTL
+XL33 out1 out1 vccNode 0 out34 modifiedDTL
+XL34 out1 out1 vccNode 0 out35 modifiedDTL
+XL35 out1 out1 vccNode 0 out36 modifiedDTL
+XL36 out1 out1 vccNode 0 out37 modifiedDTL
+XL37 out1 out1 vccNode 0 out38 modifiedDTL
+XL38 out1 out1 vccNode 0 out39 modifiedDTL
+XL39 out1 out1 vccNode 0 out40 modifiedDTL
+XL40 out1 out1 vccNode 0 out41 modifiedDTL
+XL41 out1 out1 vccNode 0 out42 modifiedDTL
+XL42 out1 out1 vccNode 0 out43 modifiedDTL
+XL43 out1 out1 vccNode 0 out44 modifiedDTL
+XL44 out1 out1 vccNode 0 out45 modifiedDTL
+XL45 out1 out1 vccNode 0 out46 modifiedDTL
+XL46 out1 out1 vccNode 0 out47 modifiedDTL
+XL47 out1 out1 vccNode 0 out48 modifiedDTL
+XL48 out1 out1 vccNode 0 out49 modifiedDTL
+XL49 out1 out1 vccNode 0 out50 modifiedDTL
+XL50 out1 out1 vccNode 0 out51 modifiedDTL
+XL51 out1 out1 vccNode 0 out52 modifiedDTL
+XL52 out1 out1 vccNode 0 out53 modifiedDTL
+XL53 out1 out1 vccNode 0 out54 modifiedDTL
+XL54 out1 out1 vccNode 0 out55 modifiedDTL
+XL55 out1 out1 vccNode 0 out56 modifiedDTL
+XL56 out1 out1 vccNode 0 out57 modifiedDTL
+XL57 out1 out1 vccNode 0 out58 modifiedDTL
+XL58 out1 out1 vccNode 0 out59 modifiedDTL
+XL59 out1 out1 vccNode 0 out60 modifiedDTL
+XL60 out1 out1 vccNode 0 out61 modifiedDTL
+XL61 out1 out1 vccNode 0 out62 modifiedDTL
+XL62 out1 out1 vccNode 0 out63 modifiedDTL
+XL63 out1 out1 vccNode 0 out64 modifiedDTL
+XL64 out1 out1 vccNode 0 out65 modifiedDTL
+XL65 out1 out1 vccNode 0 out66 modifiedDTL
+XL66 out1 out1 vccNode 0 out67 modifiedDTL
+XL67 out1 out1 vccNode 0 out68 modifiedDTL
+XL68 out1 out1 vccNode 0 out69 modifiedDTL
+XL69 out1 out1 vccNode 0 out70 modifiedDTL
+XL70 out1 out1 vccNode 0 out71 modifiedDTL
+XL71 out1 out1 vccNode 0 out72 modifiedDTL
+XL72 out1 out1 vccNode 0 out73 modifiedDTL
+XL73 out1 out1 vccNode 0 out74 modifiedDTL
+XL74 out1 out1 vccNode 0 out75 modifiedDTL
+XL75 out1 out1 vccNode 0 out76 modifiedDTL
+XL76 out1 out1 vccNode 0 out77 modifiedDTL
+XL77 out1 out1 vccNode 0 out78 modifiedDTL
+XL78 out1 out1 vccNode 0 out79 modifiedDTL
+XL79 out1 out1 vccNode 0 out80 modifiedDTL
+XL80 out1 out1 vccNode 0 out81 modifiedDTL
+XL81 out1 out1 vccNode 0 out82 modifiedDTL
+XL82 out1 out1 vccNode 0 out83 modifiedDTL
+XL83 out1 out1 vccNode 0 out84 modifiedDTL
+XL84 out1 out1 vccNode 0 out85 modifiedDTL
+XL85 out1 out1 vccNode 0 out86 modifiedDTL
+XL86 out1 out1 vccNode 0 out87 modifiedDTL
+XL87 out1 out1 vccNode 0 out88 modifiedDTL
+XL88 out1 out1 vccNode 0 out89 modifiedDTL
+
+.dc Va 0.5 5 0.05
+.control
+run
+plot V(out1) V(in)
+.endc
+.end
