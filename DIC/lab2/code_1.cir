@@ -14,3 +14,72 @@ plot V(2) V(4)
 .end
 
 
+* *TTL Inverter Transient Analysis
+
+* .model switch NPN (Bf=20)
+
+* Q1 2 1 4 switch
+* Q2 3 2 0 switch
+* R2 5 3 1.6k
+* R1 5 1 4k
+* Vcc 5 0 5
+* Vin 4 0 pulse(0 5 1ns 1ns 1ns 20us 40us)
+* c 3 0 1p
+
+* .tran 1ns 80us
+
+* .control
+* run
+* plot v(3) v(4)
+* .endc
+* .end
+
+*TTL Inverter static(DC) Analysis
+
+* .model switch NPN (Bf=20)
+
+* Q1 2 1 4 switch
+* Q2 3 2 0 switch
+* R2 5 3 1.6k
+* R1 5 1 4k
+* Vcc 5 0 5
+* Vin 4 0 dc 5
+
+* .dc Vin 0 5 0.05
+* .control
+* run
+* plot v(3) v(4)
+* .endc
+* .end
+
+* *TTL Inverter fanout
+
+* .model switch NPN (Bf=20)
+
+* Q1 2 1 4 switch
+* Q2 3 2 0 switch
+* R2 5 3 1.6k
+* R1 5 1 4k
+* Vcc 5 0 5
+* Vin 4 0 5
+
+* .subckt ttl out in c 0
+* Q3 out y 0 switch
+* Q4 y z in switch
+* R3 out c 1.6k
+* R4 z c 4k
+* .ends ttl
+
+* x1 out1 3 5 0 ttl
+* x2 out2 3 5 0 ttl
+* x3 out3 3 5 0 ttl
+* x4 out4 3 5 0 ttl
+* *x5 out5 3 5 0 ttl
+
+
+* .dc Vin 0 5 0.05
+* .control
+* run
+* plot v(3) v(4)
+* .endc
+* .end

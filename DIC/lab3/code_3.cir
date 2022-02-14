@@ -64,14 +64,6 @@ XL39 out1 out1 c 1 0 out40 dtlckt
 XL40 out1 out1 c 1 0 out41 dtlckt
 XL41 out1 out1 c 1 0 out42 dtlckt
 XL42 out1 out1 c 1 0 out43 dtlckt
-XL43 out1 out1 c 1 0 out44 dtlckt
-XL44 out1 out1 c 1 0 out45 dtlckt
-XL45 out1 out1 c 1 0 out46 dtlckt
-XL46 out1 out1 c 1 0 out47 dtlckt
-XL47 out1 out1 c 1 0 out48 dtlckt
-XL48 out1 out1 c 1 0 out49 dtlckt
-XL49 out1 out1 c 1 0 out50 dtlckt
-XL50 out1 out1 c 1 0 out51 dtlckt
 
 .dc Va 0.5 5 0.05
 .control
