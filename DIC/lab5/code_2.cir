@@ -1,0 +1,24 @@
+*TTL Inverter  Analysis
+.model switch NPN (Bf=20)
+
+.subckt ttl out in vcc_power gnd
+    Q1 out q1_base gnd switch
+    Q2 q1_base q2_base in switch
+    Rc out vcc_power 1.6k
+    Rb q2_base vcc_power 4k
+.ends ttl
+
+xd out input vcc_node 0 ttl
+
+Vcc vcc_node 0 5
+Vin input 0 5
+
+c_load out 0 1p
+
+.dc Vin 0 5 0.05
+
+.control
+run
+plot v(input) v(out)
+.endc
+.end

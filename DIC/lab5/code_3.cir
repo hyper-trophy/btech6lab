@@ -1,0 +1,36 @@
+*TTL Inverter Fanout Analysis
+.model switch NPN (Bf=50)
+
+.subckt ttl out in vcc_power gnd
+    Q1 out q1_base gnd switch
+    Q2 q1_base q2_base in switch
+    Rc out vcc_power 1.6k
+    Rb q2_base vcc_power 4k
+.ends ttl
+
+xd out input vcc_node 0 ttl
+
+Vcc vcc_node 0 5
+Vin input 0 pulse(0 5 1ns 1ns 1ns 20us 40us)
+
+x1 out1 out vcc_node 0 ttl
+x2 out2 out vcc_node 0 ttl
+x3 out3 out vcc_node 0 ttl
+x4 out4 out vcc_node 0 ttl
+x5 out5 out vcc_node 0 ttl
+x6 out6 out vcc_node 0 ttl
+x7 out7 out vcc_node 0 ttl
+* x8 out8 out vcc_node 0 ttl
+* x9 out9 out vcc_node 0 ttl
+* x10 out10 out vcc_node 0 ttl
+* x11 out11 out vcc_node 0 ttl
+* x12 out12 out vcc_node 0 ttl
+* x13 out13 out vcc_node 0 ttl
+
+.dc Vin 0 5 0.001
+
+.control
+run
+plot v(input) v(out)
+.endc
+.end
