@@ -96,7 +96,7 @@ for j=1:1:4
     title(strcat('t=',num2str((s(j)-1)/100)))
 end
 
-%% Raghav's code
+%% My code
 clc;
 clear all;
 close all;
@@ -119,19 +119,19 @@ end
 figure(1);
 subplot(4,1,1);
 plot(x);
-title('U19EC043 Transmitted Signal');
+title('U19EC046 Transmitted Signal');
 
 subplot(4,1,2);
 plot(real(y));
-title('U19EC043 Received MultiPath Signal');
+title('U19EC046 Received MultiPath Signal');
 
 subplot(4,1,3);
 plot(abs(fft(x)));
-title('U19EC043 Spectrum of Transmitted Signal');
+title('U19EC046 Spectrum of Transmitted Signal');
 
 subplot(4,1,4);
 plot(abs(fft(real(y))));
-title('U19EC043 Spectrum of Received MultiPath Signal');
+title('U19EC046 Spectrum of Received MultiPath Signal');
 
 fs=100;
 f=0:fs/101:(50*fs)/101;

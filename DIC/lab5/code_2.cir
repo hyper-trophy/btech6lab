@@ -1,5 +1,5 @@
 *TTL Inverter  Analysis
-.model switch NPN (Bf=20)
+.model switch NPN (Bf=50)
 
 .subckt ttl out in vcc_power gnd
     Q1 out q1_base gnd switch
@@ -15,7 +15,7 @@ Vin input 0 5
 
 c_load out 0 1p
 
-.dc Vin 0 5 0.05
+.dc Vin 0 5 0.005
 
 .control
 run

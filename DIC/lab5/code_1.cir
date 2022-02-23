@@ -1,5 +1,5 @@
 *TTL Inverter Transient Analysis
-.model switch NPN (Bf=20)
+.model switch NPN (Bf=50)
 
 .subckt ttl out in vcc_power gnd
     Q1 out q1_base gnd switch

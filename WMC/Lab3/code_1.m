@@ -99,20 +99,32 @@ title(sprintf(PSKstr,ModOrd));
 
 figure(maxM+1);
 
-subplot(211);
-plot(t,BERQAM(m,:),'linewidth',2,'DisplayName',sprintf(QAMstr,ModOrd));
-title('BER vs SNR (QAM) U19EC046');
-xlabel('Signal to Noise Ratio');
-ylabel('Bit Error Rate(%)');
-legend;
-hold on;
-
 subplot(212);
 plot(t,BERPSK(m,:),'linewidth',2,'DisplayName',sprintf(PSKstr,ModOrd));
+legend('m=2', 'm=3', 'm=4', 'm=5', 'm=6')
 title('BER vs SNR (PSK) U19EC046');
 xlabel('Signal to Noise Ratio');
 ylabel('Bit Error Rate(%)');
-legend;
 hold on;
 
+% subplot(211);
+% plot(t,BERQAM((8-m),:),'linewidth',2,'DisplayName',sprintf(QAMstr,ModOrd));
+% legend('m=2', 'm=3', 'm=4', 'm=5', 'm=6')
+% title('BER vs SNR (QAM) U19EC046');
+% xlabel('Signal to Noise Ratio');
+% ylabel('Bit Error Rate(%)');
+% hold on;
+
+
+end
+
+for m=2:maxM
+    subplot(211);
+    plot(t,BERQAM((8-m),:),'linewidth',2,'DisplayName',sprintf(QAMstr,ModOrd));
+    axis([1 10 0 6])
+    legend('m=2', 'm=3', 'm=4', 'm=5', 'm=6')
+    title('BER vs SNR (QAM) U19EC046');
+    xlabel('Signal to Noise Ratio');
+    ylabel('Bit Error Rate(%)');
+    hold on;
 end

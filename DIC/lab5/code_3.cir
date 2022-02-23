@@ -31,6 +31,6 @@ x7 out7 out vcc_node 0 ttl
 
 .control
 run
-plot v(input) v(out)
+plot v(input) v(out) v(out1)
 .endc
 .end
