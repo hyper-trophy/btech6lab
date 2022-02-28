@@ -1,0 +1,38 @@
+# NMOS
+.model mymos NMOS (Vt0=0.8, Kt=20u)
+
+.subckt mosinverter in vdd_node out gnd
+    M1 out in gnd gnd mymos w=2um l=1um
+    RL vdd_node out 100k
+.ends mosinverter
+
+.subckt mosinverter2 in vdd_node out gnd
+    M1 out in gnd gnd mymos w=2um l=1um
+    RL vdd_node out 200k
+.ends mosinverter2
+
+.subckt mosinverter3 in vdd_node out gnd
+    M1 out in gnd gnd mymos w=2um l=1um
+    RL vdd_node out 300k
+.ends mosinverter3
+
+.subckt mosinverter4 in vdd_node out gnd
+    M1 out in gnd gnd mymos w=2um l=1um
+    RL vdd_node out 400k
+.ends mosinverter4
+
+xd input vdd_node out_100k 0 mosinverter
+xd1 input vdd_node out_200k 0 mosinverter2
+xd2 input vdd_node out_300k 0 mosinverter3
+xd3 input vdd_node out_400k 0 mosinverter4
+
+Vdd vdd_node 0 5
+Vin input 0 5
+
+.dc Vin 0 5 0.005
+
+.control
+run
+plot v(input) v(out_100k) v(out_200k) v(out_300k) v(out_400k)
+.endc
+.end
