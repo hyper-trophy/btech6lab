@@ -1,0 +1,21 @@
+# CMOS
+.model mynmos NMOS (Vt0=0.8, Kp=50u)
+.model mypmos PMOS (Vt0=-1, Kp=20u)
+
+.subckt cmosinverter in vdd_node out gnd
+    MN out in gnd gnd mynmos w=1um l=1um
+    MP vdd_node in out vdd_node mypmos w=1.51um l=1um
+.ends cmosinverter
+
+Vdd vdd_node 0 5
+Vin input 0 pulse(0 5 1ns 1ns 1ns 20us 40us)
+
+Xd input vdd_node out 0 cmosinverter
+
+.tran 1ns 80us
+
+.control
+run
+plot v(input) v(out)
+.endc
+.end
