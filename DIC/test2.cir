@@ -1,0 +1,33 @@
+*SR Latch Using NOR
+
+.model mynmos nmos Vto=0.8 Kp=50
+.model mypmos pmos Vto=-1 Kp=20
+
+.subckt cmosNOR in1 in2 vdd_node out gnd 
+M1 out in1 gnd gnd mynmos w=1u l=1u
+M2 out in2 gnd gnd mynmos w=1u l=1u
+M3 outtemp in1 vdd_node vdd_node mypmos w=1.51u l=1u
+M4 out in2 outtemp vdd_node mypmos w=1.51u l=1u
+.ends cmosNOR
+
+
+Vdd high 0 5
+Vin1 in1 0 pulse(0 5 1ns 1ns 1ns 10us 20us)
+Vin2 in2 0 pulse(0 5 1ns 1ns 1ns 20us 40us)
+
+xd1 in1 out2 high out1 0 cmosNOR
+xd2 out1 in2 high out2 0 cmosNOR
+
+* .option delmin=0
+.tran 1ns 100us
+
+.control
+run
+
+plot v(in1)
+plot v(in2)
+plot v(out1)
+plot v(out2)
+
+.endc
+.end

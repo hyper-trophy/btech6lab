@@ -1,0 +1,62 @@
+* cmos nand sr latch
+
+.model model_pmos pmos (Vth = -1, Kp = 20E-6)
+.model model_nmos nmos (Vth = 0.8, Kp = 50E-6)
+
+.subckt nand a b o n_vdd gnd
+    M_n1 d b gnd gnd model_nmos w=1um l=1um
+    M_n2 o a d gnd model_nmos w=1um l=1um
+    M_p1 o a n_vdd n_vdd model_pmos w=1.51um l=1um
+    M_p2 o b n_vdd n_vdd model_pmos w=1.51um l=1um
+.ends nand
+
+.subckt sr_latch s r q q_bar gnd
+    X_nand1 s q_bar q n_vdd gnd nand
+    X_nand2 q r q_bar n_vdd gnd nand
+    V_dd n_vdd gnd dc(5)
+.ends sr_latch
+
+* Vdd n_vdd 0 dc(5)
+V_a s 0 pulse(0 5 1ns 1ns 1ns 10us 20us)
+V_b r 0 pulse(0 5 1ns 1ns 1ns 20us 40us)
+
+X_main s r q q_bar 0 sr_latch
+
+.tran 1ns 100us
+
+.control
+run
+plot v(s) 
+plot v(r)
+plot v(q)
+plot v(q_bar)
+.endc
+.end
+
+* cmos nand 
+
+* .model model_pmos pmos (Vth = -1, Kp = 20E-6)
+* .model model_nmos nmos (Vth = 0.8, Kp = 50E-6)
+
+* .subckt nand a b o n_vdd gnd
+*     M_n1 d b gnd gnd model_nmos w=1um l=1um
+*     M_n2 o a d gnd model_nmos w=1um l=1um
+*     M_p1 o a n_vdd n_vdd model_pmos w=1.51um l=1um
+*     M_p2 o b n_vdd n_vdd model_pmos w=1.51um l=1um
+* .ends nand
+
+* Vdd n_vdd 0 dc(5)
+* V_a a 0 pulse(0 5 1ns 1ps 1ps 10us 20us)
+* V_b b 0 pulse(0 5 1ns 1ps 1ps 20us 40us)
+
+* X_main a b o n_vdd 0 nand
+
+* .tran 20ns 80us
+
+* .control
+* run
+* plot v(a) 
+* plot v(b)
+* plot v(o)
+* .endc
+* .end
