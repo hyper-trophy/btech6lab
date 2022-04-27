@@ -1,6 +1,5 @@
 %% doppler spread
 
-
 clc;
 clear all;
 close all;
